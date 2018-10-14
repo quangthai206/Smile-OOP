@@ -15,27 +15,28 @@ public class DictionaryCommandline {
 	}
 	
 	public void dictionaryBasic() {
-		Dictionary dic = new Dictionary();
-		//new DictionaryManagement().insertFromCommandline(dic);
-		new DictionaryManagement().insertFromFile(dic);
+		DictionaryManagement dm = new DictionaryManagement();
+		dm.insertFromFile();
 		System.out.println("DICTIONARY: ");
-		showAllWords(dic);
-		new DictionaryManagement().dictionaryLookup(dic);
+		showAllWords(dm.getDic());
+		System.out.println("Seach word: ");
+		String word = sc.nextLine();
+		dm.dictionaryLookup(word);
 	}
 	
 	public void dictionaryAdvanced() {
-		Scanner sc = new Scanner(System.in);
-		Dictionary dic = new Dictionary();
 		DictionaryManagement dm = new DictionaryManagement();
-		dm.insertFromFile(dic);
+		dm.insertFromFile();
 		int choice;
+		String word;
+		String mean;
 		while(true) {
 			System.out.println();
 			System.out.println("+----------------------------+");
 			System.out.println("|    ^ SMILE DICTIONARY ^    |");
 			System.out.println("|                            |");
-			System.out.println("|   1) Search by word         |");
-			System.out.println("|   2) Search by prefix       |");
+			System.out.println("|   1) Search by word        |");
+			System.out.println("|   2) Search by prefix      |");
 			System.out.println("|   3) Add new word          |");
 			System.out.println("|   4) Modify word           |");
 			System.out.println("|   5) Delete word           |");
@@ -48,26 +49,42 @@ public class DictionaryCommandline {
 			choice = Integer.parseInt(sc.nextLine());
 			switch(choice) {
 			case 1:
-				dm.dictionaryLookup(dic);
+				System.out.println("Seach word: ");
+				word = sc.nextLine();
+				mean = dm.dictionaryLookup(word);
+				if(mean != null) {
+					System.out.println("Meaning: " + mean);
+				}
+				else {
+					System.out.println("No exact match found for \"" + word + "\" in English");
+				}
 				break;
 			case 2:
-				dictionarySearcher(dic);
+				dictionarySearcher(dm.getDic());
 				break;
 			case 3:
-				dm.addWord(dic);
+				System.out.println("Add word: ");
+				word = sc.nextLine();
+				System.out.println("Meaning: ");
+				mean = sc.nextLine();
+				dm.addWord(word, mean);
 				break;
 			case 4:
-				dm.modifyWord(dic);
+				System.out.println("Modify word: ");
+				word = sc.nextLine();
+				dm.modifyWord(word);
 				break;
 			case 5:
-				dm.deleteWord(dic);
+				System.out.println("Delete word: ");
+				word = sc.nextLine();
+				dm.deleteWord(word);
 				break;
 			case 6:
-				showAllWords(dic);
+				showAllWords(dm.getDic());
 				break;
 			case 7:
 				try {
-					dm.dictionaryExportToFile(dic);
+					dm.dictionaryExportToFile();
 				}
 				catch(Exception e) {
 					e.printStackTrace();

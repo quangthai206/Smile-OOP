@@ -11,8 +11,13 @@ import java.util.Scanner;
 
 public class DictionaryManagement {
 	private Scanner sc = new Scanner(System.in);
+	private Dictionary dic = new Dictionary();
 	
-	public void insertFromCommandline(Dictionary dic) {
+	public Dictionary getDic() {
+		return dic;
+	}
+	
+	public void insertFromCommandline() {
 		System.out.println("Enter number of words: ");
 		int n = sc.nextInt();
 		sc.nextLine();
@@ -26,7 +31,7 @@ public class DictionaryManagement {
 		}
 	}
 	
-	public void insertFromFile(Dictionary dic) {
+	public void insertFromFile() {
 		try {
 			FileReader fr = new FileReader("dictionaries.txt");
 			BufferedReader br = new BufferedReader(fr);
@@ -43,63 +48,57 @@ public class DictionaryManagement {
 		}
 	}
 	
-	public void dictionaryLookup(Dictionary dic) {
-		System.out.println("Search word: ");
-		String engWord = sc.nextLine();
+	public String dictionaryLookup(String engWord) {
 		int pos = Collections.binarySearch(dic.words, new Word(engWord,null));
 		if(pos >= 0) {
-			System.out.println("Meaning: " + dic.words.get(pos).getWord_explain());
+			return dic.words.get(pos).getWord_explain();
 		}
-		else {
-			System.out.println("No exact match found for \"" + engWord + "\" in English");
-		}
+		return null;
 	}
 	
 	
-	public void addWord(Dictionary dic) {
-		System.out.println("Add word: ");
-		String word = sc.nextLine();
+	public boolean addWord(String word, String mean) {
 		int pos = Collections.binarySearch(dic.words, new Word(word,null));
 		if(pos >= 0) {
 			System.out.println("The word is already exist in dictionary!");
+			return false;
 		}
 		else {
-			System.out.println("Enter mean: ");
-			String mean = sc.nextLine();
 			dic.addWord(new Word(word.toLowerCase(),mean),(-pos-1));
 			System.out.println("Add successfully!");
+			return true;
 		}
 	}
 	
-	public void modifyWord(Dictionary dic) {
-		System.out.println("Modify word: ");
-		String word = sc.nextLine();
+	public boolean modifyWord(String word) {
 		int pos = Collections.binarySearch(dic.words, new Word(word,null));
 		if(pos >= 0) {
 			System.out.println("New meaning: ");
 			String mean = sc.nextLine();
 			dic.words.get(pos).setWord_explain(mean);
 			System.out.println("Modify successfully!");
+			return true;
 		}
 		else {
 			System.out.println("The word is not exist in dictionary!");
+			return false;
 		}	
 	}
 	
-	public void deleteWord(Dictionary dic) {
-		System.out.println("Delete word: ");
-		String word = sc.nextLine();
+	public boolean deleteWord(String word) {
 		int pos = Collections.binarySearch(dic.words, new Word(word,null));
 		if(pos >= 0) {
 			dic.words.remove(pos);
 			System.out.println("Remove successfully!");
+			return true;
 		}
 		else {
 			System.out.println("The word is not exist in dictionary!");
+			return false;
 		}
 	}
 	
-	public void dictionaryExportToFile(Dictionary dic) throws FileNotFoundException {
+	public void dictionaryExportToFile() throws FileNotFoundException {
 			File file = new File("output.txt");
 			PrintWriter pw = new PrintWriter(file);
 			for(int i=0; i<dic.words.size(); i++) {
