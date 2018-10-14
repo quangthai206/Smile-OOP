@@ -1,0 +1,33 @@
+account	tai khoan
+app	chuong trinh
+apple	qua tao
+boy	cau be
+can	co the
+cat	con meo
+duck	con vit
+earth	trai dat
+family	gia dinh
+garden	vuon
+hello	xin chao
+i	toi, ta, to
+jean	quan bo
+key	chia khoa
+large	rong lon
+love	tinh yeu
+mouse	con chuot
+nervous	lo lang, bon chon
+odd	le, coc cach
+on	ben trong
+online	truc tuyen
+peaceful	hoa binh
+queue	hang doi
+rich	giau
+supermarket	sieu thi
+tooth	rang
+user	nguoi dung
+vocabulary	tu vung
+world	the gioi
+xray	tia X
+yellow	mau vang
+zebra	ngua van
+zoo	so thu
