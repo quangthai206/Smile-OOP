@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="475.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TranslateController">
+   <children>
+      <Label fx:id="label1" layoutX="31.0" layoutY="12.0" prefHeight="37.0" prefWidth="101.0" text="Tiếng Anh" textFill="#2c95e1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="input" layoutX="31.0" layoutY="49.0" prefHeight="165.0" prefWidth="470.0" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <Label fx:id="label2" layoutX="31.0" layoutY="230.0" prefHeight="37.0" prefWidth="101.0" text="Tiếng Việt" textFill="#2c95e1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="output" layoutX="31.0" layoutY="267.0" prefHeight="165.0" prefWidth="470.0" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <Button fx:id="swapButton" layoutX="550.0" layoutY="61.0" mnemonicParsing="false" onAction="#swapButtonClicked" prefHeight="40.0" prefWidth="77.0">
+         <graphic>
+            <ImageView fx:id="swapIV" fitHeight="30.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Button>
+      <Button fx:id="translateButton" layoutX="550.0" layoutY="198.0" mnemonicParsing="false" onAction="#translateButtonClicked" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: #2c95e1; -fx-cursor: hand;" text="Dịch" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="speakButton" layoutX="550.0" layoutY="259.0" mnemonicParsing="false" onAction="#speakButtonClicked" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: #2c95e1; -fx-cursor: hand;" text="Đọc" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
